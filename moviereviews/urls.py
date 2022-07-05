@@ -1,3 +1,4 @@
+from os import name
 from django.contrib import admin
 from django.urls import path, include
 from movie import views as movieViews
@@ -10,6 +11,9 @@ urlpatterns = [
     path('about/', movieViews.about, name='about'),
     path('signup/', movieViews.signup, name='signup'),
     path('news/', include('news.urls')),
+    path('movie/', include('movie.urls')),
+    path('accounts/', include('accounts.urls')),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

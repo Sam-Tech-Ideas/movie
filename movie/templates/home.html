@@ -1,102 +1,119 @@
-<html>
-<head>
-    <title>Movie</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
-     crossorigin="anonymous">
-    
-        <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous">
-        </script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Ho</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins';
+
+
+        }
+        body{
+            background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),url(http://itsalltherage.com/wp-content/uploads/2017/07/doctorstrange.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+            overflow-x:hidden;
+
+        }
+        ul li{
+            list-style-type: none;
+
+            
+        }
+        ul li a{
+            text-decoration: none;
+            color: white;
+            font-size: 1.3rem;
+        }
+        ul{
+            display:flex;
+            justify-content: space-between;
+        }
+        .just{
+            display: flex;
+            justify-content: space-between;
+        }
         
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
-        <div class="container">
-        <a class="navbar-brand" href="#">Movies</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse"
-        id="navbarNavAltMarkup">
-        <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="{% url 'news'%}">News</a>
-        <a class="nav-link" href="'">Login</a>
-        <a class="nav-link" href="">Sign Up</a>
-        </div>
-        </div>
-        </div>
-        </nav>
+    </style>
+  </head>
+  <body>
+
+<div class="container text-white">
+    <div class="just">
+    <h3 class="p-2"> <span class="text-warning">Movie</span>HUB</h3>
+    <ul class="p-2">
+        <li class="fw-bold text-uppercase">
+            <a href="" class="p-4">Home</a>
+        </li>
+        <li class="fw-bold text-uppercase">
+            <a href="" class="p-2">Sign Up</a>
+        </li>
+        <li class="fw-bold text-uppercase">
+            <a href="" class="p-2">Log In</a>
+        
+        </li>
+        
+        
+    </ul>
+</div>
+
+<!--End of navabr-->
+
     
-    
-    <div class="container">
-        <form action="">
-        <div class="mb-3">
+<!--Search bar-->
+<div class="col-md-6 m-4">
+    <form action="" class="">
+        <div class="mb-3 ">
         <label for="searchMovie" class="form-label">
         Search for Movie:
         </label>
         <input type="text" class="form-control"
         name="searchMovie" />
         </div>
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn btn-danger">Search</button>
         </form>
-        <p>  Searching for {{ searchTerm }}</p>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            {% for movie in movies %}
-            <div v-for="movie in movies" class="col">
-            <div class="card">
-            <img class="card-img-top" src="{{ movie.image.url}}" />
-         <div class="card-body">
-            <h5 class="card-title fw-bold">{{ movie.title }}
-            </h5>
-            <p class="card-text">{{ movie.description }}</p>
-            {% if movie.url %}
-            <a href="{{ movie.url }}" class="btn btn-primary">
-            Movie Link
-            </a>
-            {% endif %}
-            </div>
-            </div>
-            </div>
-            {% endfor %}
-            </div>
-        <br>
-      <br>
-      <h2>join our mailing list:</h2>
-      <form action="{% url 'signup' %}">
-        <div class="mb-3">
-            <label for="email" class="form-label"> Enter your
-                email: </label>
-                <input type="email" class="form-control"
-                name="email" />
-                </div>
-                <button type="submit" class="btn btn-primary">Sign
-                Up</button>
-                
-    </form>
+        <p class="text-white">Searching for: {{searchTerm}}</p> 
         </div>
-        <footer class="text-center text-lg-start bg-light text-muted mt-4">
-            <div class="text-center p-4">
-            © 2021 Copyright -
-            <a class="text-reset fw-bold text-decoration-none"
-            target="_blank"
-            href="https://twitter.com/greglim81">
-            Greg Lim
-            </a> -
-            <a class="text-reset fw-bold text-decoration-none"
-            target="_blank"
-            href="https://twitter.com/danielgarax">
-            Daniel Correa
-            </a>
-            </div>
-            </footer>
-        
-</body>
+    </div>
+    
+    
+<!--end of search-->
+
+<div class="row row-cols-1 row-cols-md-3 mb-3">
+    {% for movie in movies %}
+ <div class="col p-2 ">
+   <div class="card h-100 m-4 border shadow-lg border-1  rounded-3">
+     <img src="{{ movie.image.url }}" class="" alt="..." height="340px"  >
+     <div class="card-body bg-warning text-white">
+       <h5 class="card-title">{{ movie.title }}</h5>
+       <p class="card-text">{{ movie.description }}</p>
+        {% if movie.url %}
+       {% endif %}
+     </div>
+   </div>
+ </div>      
+{% endfor %}
+</div>
+</div>
+<footer class="text-white mt-5 pt-5 bg-dark text-center">
+     <span class=""> Copyright &copy; 2022 All reserved</span>
+    </footer>
+
+   
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+   
 </html>
-
-
-
-
-
